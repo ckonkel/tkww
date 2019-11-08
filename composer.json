@@ -6,10 +6,13 @@
     }
   },
   "require": {
+    "justinrainbow/json-schema": "^5.2",
     "bluerhinos/phpmqtt": "dev-master",
-    "php": ">=7.3"
+    "php": ">=7.3",
+    "mon1k/services_json": "dev-master"
   },
   "require-dev": {
     "symplify/easy-coding-standard": "^6.1"
   }
 }
+
