@@ -44,7 +44,7 @@ class CloudMQTT implements ServiceInterface
             $this->service->publish($topic, $message, 0);
             $this->service->close();
         } else {
-            echo "Timeout!\n";
+            echo "Time out!\n";
         }
     }
 
@@ -53,6 +53,27 @@ class CloudMQTT implements ServiceInterface
      */
     public function subscribe(string $topic): void
     {
-        // TODO
+        if (!$this->service->connect(true, null, $this->config["username"], $this->config["password"])) {
+            echo "Time out!\n";
+            exit(1);
+        }
+        $topics[$topic] = array("qos" => 0, "function" => array($this, 'output'));
+        $this->service->subscribe($topics, 0);
+
+        while ($this->service->proc()) {
+        }
+        $this->service->close();
+    }
+
+    /**
+     * @param string $topic
+     * @param $msg
+     */
+    public function output(string $topic, $msg): void
+    {
+        echo "Received: " . date("r") . "\n";
+        echo "Topic: {$topic}\n";
+        echo "Message:\n";
+        echo $msg . "\n";
     }
 }
