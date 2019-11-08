@@ -1,0 +1,15 @@
+{
+  "name": "tkww/messaging",
+  "autoload": {
+    "psr-4": {
+      "TKWW\\Messaging\\": "src/"
+    }
+  },
+  "require": {
+    "bluerhinos/phpmqtt": "dev-master",
+    "php": ">=7.3"
+  },
+  "require-dev": {
+    "symplify/easy-coding-standard": "^6.1"
+  }
+}
